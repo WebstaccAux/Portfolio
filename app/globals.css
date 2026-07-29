@@ -411,6 +411,67 @@ a:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
 }
 .browser-bar b { justify-self: end; color: #94958d; }
 
+.live-preview-link {
+  position: relative;
+  display: block;
+  height: 433px;
+  overflow: hidden;
+  background: #111;
+}
+
+.live-preview-link > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 500ms ease, filter 300ms ease;
+}
+
+.live-preview-status,
+.live-preview-open {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,.24);
+  color: #fff;
+  background: rgba(8,9,7,.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.live-preview-status {
+  top: 16px;
+  left: 16px;
+  gap: 8px;
+  padding: 9px 11px;
+}
+
+.live-preview-status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 4px rgba(200,255,50,.14);
+}
+
+.live-preview-open {
+  right: 16px;
+  bottom: 16px;
+  gap: 12px;
+  padding: 12px 14px;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.live-preview-open span { font-size: 13px; }
+.live-preview-link:hover > img { transform: scale(1.025); filter: brightness(.78); }
+.live-preview-link:hover .live-preview-open { color: var(--ink); background: var(--lime); }
+
 .legal-page { min-height: 433px; padding: 23px 28px 30px; background: #f7f4eb; }
 .legal-nav { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 25px; }
 .legal-nav strong { color: #092f3b; font-size: 11px; line-height: .92; letter-spacing: -.05em; }
@@ -536,6 +597,7 @@ footer > div:first-child p { margin: 25px 0 0; color: #696a64; font-size: 11px; 
   .project-meta > p:not(.project-description), .project-meta h2, .project-description, .project-meta a { grid-column: 2; }
   .project-meta > p:not(.project-description) { margin-top: 0; }
   .project-screen { min-height: 430px; }
+  .live-preview-link { height: 388px; }
   .services { grid-template-columns: 1fr; }
   .services-intro { position: static; }
   .services-intro h2 { max-width: 700px; }
@@ -569,6 +631,9 @@ footer > div:first-child p { margin: 25px 0 0; color: #696a64; font-size: 11px; 
   .project-meta h2 { font-size: 39px; }
   .project-screen { min-height: 330px; }
   .browser-bar { height: 32px; }
+  .live-preview-link { height: 298px; }
+  .live-preview-status { top: 11px; left: 11px; }
+  .live-preview-open { right: 11px; bottom: 11px; }
   .legal-page, .leads-page { min-height: 298px; padding: 18px; }
   .legal-grid { min-height: 240px; gap: 14px; }
   .legal-copy h3 { font-size: 30px; }

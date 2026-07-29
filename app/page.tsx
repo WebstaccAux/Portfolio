@@ -29,89 +29,40 @@ function BrowserBar({ url }: { url: string }) {
   );
 }
 
-function LegalMockup() {
+function LivePreview({
+  title,
+  url,
+  image,
+}: {
+  title: string;
+  url: string;
+  image: string;
+}) {
   return (
-    <div className="project-screen legal-screen" aria-hidden="true">
-      <BrowserBar url="rechtsschutzpartner24.de" />
-      <div className="legal-page">
-        <div className="legal-nav">
-          <strong>RECHTSSCHUTZ<br />PARTNER<span>24</span></strong>
-          <div />
-          <i />
-        </div>
-        <div className="legal-grid">
-          <div className="legal-copy">
-            <small>ARAG PARTNER</small>
-            <h3>Ihr Recht.<br />Unsere Stärke.</h3>
-            <p>Rechtsschutz ohne Wartezeit – persönlich und digital.</p>
-            <button tabIndex={-1}>Angebot einholen</button>
-          </div>
-          <div className="legal-form">
-            <small>IN 2 MINUTEN ZUM ANGEBOT</small>
-            <b>Welchen Schutz benötigen Sie?</b>
-            <span>Privatrechtsschutz</span>
-            <span>Gewerblicher Rechtsschutz</span>
-            <em>Weiter →</em>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LeadsMockup() {
-  return (
-    <div className="project-screen leads-screen" aria-hidden="true">
-      <BrowserBar url="leads123.de" />
-      <div className="leads-page">
-        <div className="leads-nav">
-          <strong>leads<span>123</span></strong>
-          <i>MEHR LEADS</i>
-        </div>
-        <div className="leads-copy">
-          <small>LEADS, DIE ZU KUNDEN WERDEN.</small>
-          <h3>Planbar.<br />Messbar.<br /><span>Wachstum.</span></h3>
-          <div className="leads-button">Jetzt durchstarten <b>→</b></div>
-        </div>
-        <div className="leads-stack">
-          <div><small>01</small><b>Strategie</b><i>↗</i></div>
-          <div><small>02</small><b>Kampagne</b><i>↗</i></div>
-          <div><small>03</small><b>Leads</b><i>↗</i></div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function BeatMockup() {
-  return (
-    <div className="project-screen beat-screen" aria-hidden="true">
-      <BrowserBar url="beatstacc.de" />
-      <div className="beat-page">
-        <aside>
-          <strong><i>▥</i> beatstacc</strong>
-          <span>⌂ &nbsp; Start</span>
-          <span>◉ &nbsp; Entdecken</span>
-          <span>◆ &nbsp; Marketplace</span>
-          <small>DEINE MUSIK</small>
-          <span>＋ &nbsp; Playlist erstellen</span>
-          <span>♥ &nbsp; Lieblingssongs</span>
-        </aside>
-        <div className="beat-content">
-          <div className="beat-top">‹ &nbsp; › <span>⌕ &nbsp; Was willst du hören?</span></div>
-          <div className="beat-hero">
-            <small>BEATSTACC EXCLUSIVE</small>
-            <h3>DEIN SOUND.<br /><i>DEINE</i> REGELN.</h3>
-            <p>Beats entdecken, Songs streamen und Equipment finden.</p>
-            <button tabIndex={-1}>JETZT ENTDECKEN</button>
-          </div>
-          <div className="beat-cards">
-            <div className="cover cover-one" />
-            <div className="cover cover-two" />
-            <div className="cover cover-three" />
-          </div>
-        </div>
-      </div>
+    <div className="project-screen live-preview">
+      <BrowserBar url={url.replace(/^https?:\/\//, "")} />
+      <a
+        className="live-preview-link"
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${title} live öffnen`}
+      >
+        <img
+          src={image}
+          alt={`Aktuelle Live-Vorschau von ${title}`}
+          width={1440}
+          height={900}
+          loading="lazy"
+        />
+        <span className="live-preview-status">
+          <i aria-hidden="true" />
+          Live-Vorschau
+        </span>
+        <span className="live-preview-open">
+          Website öffnen <Arrow diagonal />
+        </span>
+      </a>
     </div>
   );
 }
@@ -157,7 +108,13 @@ const projects = [
     description:
       "Eine vertrauensstarke Website für erklärungsbedürftige Versicherungsprodukte – klar strukturiert, fokussiert und auf die schnelle Kontaktaufnahme ausgelegt.",
     href: "https://rechtsschutzpartner24.de",
-    visual: <LegalMockup />,
+    visual: (
+      <LivePreview
+        title="Rechtsschutzpartner24"
+        url="https://rechtsschutzpartner24.de"
+        image="/project-previews/rechtsschutzpartner24.png"
+      />
+    ),
   },
   {
     number: "02",
@@ -166,7 +123,13 @@ const projects = [
     description:
       "Ein prägnanter digitaler Auftritt rund um Leadgenerierung: mit klarer Positionierung, energischem Design und einer geradlinigen Nutzerführung.",
     href: "https://leads123.de",
-    visual: <LeadsMockup />,
+    visual: (
+      <LivePreview
+        title="Leads123"
+        url="https://leads123.de"
+        image="/project-previews/leads123.png"
+      />
+    ),
   },
   {
     number: "03",
@@ -175,7 +138,13 @@ const projects = [
     description:
       "Eine eigenständige Musikplattform mit Streaming-Charakter, Marketplace und markanter visueller Sprache zwischen Studio, Community und Commerce.",
     href: "https://beatstacc.de",
-    visual: <BeatMockup />,
+    visual: (
+      <LivePreview
+        title="Beatstacc"
+        url="https://beatstacc.de"
+        image="/project-previews/beatstacc.png"
+      />
+    ),
   },
 ];
 
