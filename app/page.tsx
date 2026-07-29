@@ -104,6 +104,15 @@ const projects = [
   {
     number: "01",
     title: "Rechtsschutzpartner24",
+    brandClass: "rechtsschutz",
+    brandName: (
+      <>
+        <span className="client-line">Rechtsschutz</span>
+        <span className="client-line">
+          Partner<span className="client-accent">24</span>
+        </span>
+      </>
+    ),
     category: "Webdesign · Conversion",
     description:
       "Eine vertrauensstarke Website für erklärungsbedürftige Versicherungsprodukte – klar strukturiert, fokussiert und auf die schnelle Kontaktaufnahme ausgelegt.",
@@ -119,6 +128,12 @@ const projects = [
   {
     number: "02",
     title: "leads123",
+    brandClass: "leads",
+    brandName: (
+      <span className="client-line">
+        Leads<span className="client-accent">123</span>
+      </span>
+    ),
     category: "Branding · Landingpage",
     description:
       "Ein prägnanter digitaler Auftritt rund um Leadgenerierung: mit klarer Positionierung, energischem Design und einer geradlinigen Nutzerführung.",
@@ -134,6 +149,12 @@ const projects = [
   {
     number: "03",
     title: "beatstacc",
+    brandClass: "beat",
+    brandName: (
+      <span className="client-line">
+        beat<span className="client-accent">stacc</span>
+      </span>
+    ),
     category: "Digital Product · Webdesign",
     description:
       "Eine eigenständige Musikplattform mit Streaming-Charakter, Marketplace und markanter visueller Sprache zwischen Studio, Community und Commerce.",
@@ -220,7 +241,9 @@ export default function Home() {
             <div className="project-meta">
               <span>{project.number}</span>
               <p>{project.category}</p>
-              <h2>{project.title}</h2>
+              <h2 className={`client-name client-name--${project.brandClass}`}>
+                {project.brandName}
+              </h2>
               <p className="project-description">{project.description}</p>
               <a href={project.href} target="_blank" rel="noreferrer">
                 Live ansehen <Arrow diagonal />

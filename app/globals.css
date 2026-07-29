@@ -354,6 +354,49 @@ a:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
   overflow-wrap: anywhere;
 }
 
+.project-meta .client-name {
+  line-height: .9;
+  overflow-wrap: normal;
+}
+
+.client-line {
+  display: block;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.client-name--rechtsschutz {
+  font-size: clamp(38px, 3.2vw, 53px) !important;
+  font-weight: 800;
+  letter-spacing: -.065em !important;
+}
+
+.client-name--rechtsschutz .client-line + .client-line {
+  margin-top: .1em;
+}
+
+.client-name--rechtsschutz .client-accent {
+  display: inline-block;
+  margin-left: .07em;
+  padding: .02em .11em .04em;
+  border-radius: .09em;
+  color: #090a08;
+  background: #fff500;
+  font-size: .72em;
+  letter-spacing: -.04em;
+  vertical-align: .12em;
+}
+
+.client-name--leads .client-accent {
+  color: #8439e8;
+  font-weight: 900;
+}
+
+.client-name--beat .client-accent {
+  color: #f34f16;
+  font-weight: 900;
+}
+
 .project-description {
   max-width: 430px;
   margin: 28px 0 0;
@@ -629,6 +672,7 @@ footer > div:first-child p { margin: 25px 0 0; color: #696a64; font-size: 11px; 
   .project-meta { display: block; }
   .project-meta > p:not(.project-description) { margin-top: 22px; }
   .project-meta h2 { font-size: 39px; }
+  .client-name--rechtsschutz { font-size: 41px !important; }
   .project-screen { min-height: 330px; }
   .browser-bar { height: 32px; }
   .live-preview-link { height: 298px; }
