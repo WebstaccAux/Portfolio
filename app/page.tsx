@@ -1,3 +1,5 @@
+import MotionController from "./MotionController";
+
 const Arrow = ({ diagonal = false }: { diagonal?: boolean }) => (
   <span aria-hidden="true">{diagonal ? "↗" : "→"}</span>
 );
@@ -100,6 +102,33 @@ const services = [
   },
 ];
 
+const processSteps = [
+  {
+    number: "01",
+    label: "Analyse",
+    title: "Verstehen",
+    text: "Ziele, Zielgruppe und Ausgangslage werden glasklar.",
+  },
+  {
+    number: "02",
+    label: "Strategie",
+    title: "Verdichten",
+    text: "Aus Erkenntnissen wird eine schlüssige digitale Richtung.",
+  },
+  {
+    number: "03",
+    label: "Produktion",
+    title: "Umsetzen",
+    text: "Design, Technik und Kampagnen greifen sauber ineinander.",
+  },
+  {
+    number: "04",
+    label: "Optimierung",
+    title: "Wachsen",
+    text: "Wir messen, lernen und verbessern, was bereits funktioniert.",
+  },
+];
+
 const projects = [
   {
     number: "01",
@@ -172,6 +201,7 @@ const projects = [
 export default function Home() {
   return (
     <main id="top">
+      <MotionController />
       <header className="site-header">
         <Logo />
         <nav aria-label="Hauptnavigation">
@@ -212,12 +242,12 @@ export default function Home() {
       </section>
 
       <section className="statement section-pad">
-        <p className="eyebrow dark">WAS WIR TUN</p>
-        <h2>
+        <p className="eyebrow dark" data-reveal>WAS WIR TUN</p>
+        <h2 data-reveal>
           Gute Websites sehen gut aus.<br />
           <span>Großartige Websites arbeiten.</span>
         </h2>
-        <div className="statement-grid">
+        <div className="statement-grid" data-reveal>
           <p>
             Webstacc verbindet klare Strategie, charakterstarkes Design und
             messbares Marketing. Keine Lösungen von der Stange, sondern digitale
@@ -232,12 +262,12 @@ export default function Home() {
       </section>
 
       <section className="projects section-pad" id="projekte">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <p className="eyebrow dark">AUSGEWÄHLTE PROJEKTE</p>
           <p className="section-count">03 / CASES</p>
         </div>
         {projects.map((project) => (
-          <article className="project" key={project.title}>
+          <article className="project" key={project.title} data-reveal>
             <div className="project-meta">
               <span>{project.number}</span>
               <p>{project.category}</p>
@@ -255,7 +285,7 @@ export default function Home() {
       </section>
 
       <section className="services section-pad" id="leistungen">
-        <div className="services-intro">
+        <div className="services-intro" data-reveal>
           <p className="eyebrow">LEISTUNGEN</p>
           <h2>Alles, was eine starke digitale Präsenz braucht.</h2>
           <p>
@@ -265,7 +295,7 @@ export default function Home() {
         </div>
         <div className="service-list">
           {services.map((service) => (
-            <article key={service.number}>
+            <article key={service.number} data-reveal>
               <span>{service.number}</span>
               <div>
                 <h3>{service.title}</h3>
@@ -279,31 +309,40 @@ export default function Home() {
       </section>
 
       <section className="process section-pad" id="prozess">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <p className="eyebrow dark">SO ARBEITEN WIR</p>
           <p className="section-count">KLAR · DIREKT · PARTNERSCHAFTLICH</p>
         </div>
+        <div className="process-intro">
+          <h2 data-reveal>
+            Von der ersten Idee<br />
+            <em>zum digitalen Vorsprung.</em>
+          </h2>
+          <p data-reveal>
+            Vier klare Phasen, ein gemeinsamer Fokus: aus guten Gedanken wird
+            ein Auftritt, der sichtbar arbeitet und messbar wächst.
+          </p>
+        </div>
+        <div className="process-rail" data-reveal aria-hidden="true">
+          <span>Start</span>
+          <div className="process-track"><i /></div>
+          <span>Wachstum</span>
+        </div>
         <div className="process-grid">
-          <article>
-            <span>01</span>
-            <h3>Verstehen</h3>
-            <p>Ziele, Zielgruppe und Ausgangslage werden glasklar.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Verdichten</h3>
-            <p>Aus Erkenntnissen wird eine schlüssige digitale Strategie.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Umsetzen</h3>
-            <p>Design, Technik und Kampagnen greifen sauber ineinander.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Wachsen</h3>
-            <p>Wir messen, lernen und verbessern, was bereits funktioniert.</p>
-          </article>
+          {processSteps.map((step) => (
+            <article key={step.number} data-reveal>
+              <div className="process-step-top">
+                <span>{step.number}</span>
+                <i aria-hidden="true">↗</i>
+              </div>
+              <div className="process-step-copy">
+                <small>{step.label}</small>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+              <b aria-hidden="true">{step.number}</b>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -311,13 +350,13 @@ export default function Home() {
         <div className="contact-shape" aria-hidden="true">
           <span>W</span>
         </div>
-        <p className="eyebrow">BEREIT FÜR DEN NÄCHSTEN SCHRITT?</p>
-        <h2>Aus einer Idee wird<br /><em>ein Auftritt.</em></h2>
-        <p>
+        <p className="eyebrow" data-reveal>BEREIT FÜR DEN NÄCHSTEN SCHRITT?</p>
+        <h2 data-reveal>Aus einer Idee wird<br /><em>ein Auftritt.</em></h2>
+        <p data-reveal>
           Erzählen Sie uns kurz, was Sie vorhaben. Wir melden uns persönlich mit
           einer ehrlichen Einschätzung und den nächsten sinnvollen Schritten.
         </p>
-        <a href="https://webstacc.de/kontakt/" target="_blank" rel="noreferrer">
+        <a href="https://webstacc.de/kontakt/" target="_blank" rel="noreferrer" data-reveal>
           Kostenloses Erstgespräch <Arrow />
         </a>
       </section>
